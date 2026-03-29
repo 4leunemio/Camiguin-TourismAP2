@@ -466,29 +466,6 @@ main {
     transform: scale(1.009);
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-    .subpage-gallery {
-        grid-template-columns: 1fr;
-        grid-template-rows: 300px 200px;
-        height: auto;
-    }
-
-    .subpage-gallery-grid {
-        height: 200px;
-    }
-}
-
-@media (max-width: 480px) {
-    .subpage-gallery {
-        grid-template-rows: 220px 160px;
-    }
-
-    .subpage-gallery-grid {
-        height: 160px;
-    }
-}
-
 /* ===========================
    SUBPAGE 2-IMAGE GALLERY
    =========================== */
@@ -518,24 +495,6 @@ main {
 
 .subpage-gallery-2-img:hover img {
     transform: scale(1.007);
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-    .subpage-gallery-2 {
-        grid-template-columns: 1fr;
-        height: auto;
-    }
-
-    .subpage-gallery-2-img {
-        height: 250px;
-    }
-}
-
-@media (max-width: 480px) {
-    .subpage-gallery-2-img {
-        height: 200px;
-    }
 }
 
 .detail-card {
@@ -608,7 +567,6 @@ main {
     display: block;
 }
 
-
 /* ===========================
    PHOTO GALLERY
    =========================== */
@@ -680,23 +638,6 @@ main {
     font-size: 15px;
     color: #0a2455;
     font-weight: bold;
-}
-
-/* Gallery responsive */
-@media (max-width: 1024px) {
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 480px) {
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery-img-wrap {
-        height: 220px;
-    }
 }
 
 /* ===========================
@@ -890,6 +831,38 @@ footer {
         font-size: 36px;
     }
 
+    /* --- 5-image gallery fix --- */
+    .subpage-gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        height: auto;
+    }
+
+    .subpage-gallery-main {
+        height: 300px;
+    }
+
+    .subpage-gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        height: 300px;
+    }
+
+    /* --- 2-image gallery fix --- */
+    .subpage-gallery-2 {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .subpage-gallery-2-img {
+        height: 250px;
+    }
+
+    /* --- photo gallery fix --- */
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .footer-top {
         flex-direction: column;
         padding: 30px 24px;
@@ -941,10 +914,6 @@ footer {
         font-size: 28px;
     }
 
-    .fact-label {
-        font-size: 11px;
-    }
-
     main {
         padding: 30px 16px;
     }
@@ -959,5 +928,32 @@ footer {
 
     .subpage-intro h2 {
         font-size: 24px;
+    }
+
+    /* --- 5-image gallery fix --- */
+    .subpage-gallery-main {
+        height: 220px;
+    }
+
+    .subpage-gallery-grid {
+        height: 220px;
+    }
+
+    /* --- 2-image gallery fix --- */
+    .subpage-gallery-2-img {
+        height: 200px;
+    }
+
+    /* --- photo gallery fix --- */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-img-wrap {
+        height: 220px;
+    }
+
+    .footer-top {
+        padding: 24px 16px;
     }
 }
