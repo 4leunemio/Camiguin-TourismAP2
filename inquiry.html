@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Inquiry - Camiguin</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <div class="site-logo">
+                    <a href="index.html"><img src="images/Camiguin_Seal.png" alt="camiguin-logo"></a>
+                    <h1>The Province of Camiguin</h1>
+                </div>
+                <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Destinations</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="destinations.html">All Destinations</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="destinations.html#white-island">White Island</a></li>
+                                <li><a class="dropdown-item" href="destinations.html#hibok-hibok">Mt. Hibok-Hibok</a></li>
+                                <li><a class="dropdown-item" href="destinations.html#sunken-cemetery">Sunken Cemetery</a></li>
+                                <li><a class="dropdown-item" href="destinations.html#ardent-springs">Ardent Hot Springs</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Culture</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="culture.html">All Culture</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="culture.html#history">History</a></li>
+                                <li><a class="dropdown-item" href="culture.html#festivals">Festivals</a></li>
+                                <li><a class="dropdown-item" href="culture.html#churches">Churches & Ruins</a></li>
+                                <li><a class="dropdown-item" href="culture.html#cuisine">Local Cuisine</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Experiences</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="experiences.html">All Experiences</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="experiences.html#beach">Beach & Swimming</a></li>
+                                <li><a class="dropdown-item" href="experiences.html#diving">Diving & Snorkeling</a></li>
+                                <li><a class="dropdown-item" href="experiences.html#hiking">Hiking & Trekking</a></li>
+                                <li><a class="dropdown-item" href="experiences.html#island-hopping">Island Hopping</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Travel</a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="travel.html">Travel Planning</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="travel.html#best-time">Best Time to Visit</a></li>
+                                <li><a class="dropdown-item" href="travel.html#getting-to">Getting To</a></li>
+                                <li><a class="dropdown-item" href="travel.html#getting-around">Getting Around</a></li>
+                                <li><a class="dropdown-item" href="travel.html#where-to-stay">Where to Stay</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="about-photo-gallery.html">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link" href="inquiry.html">Inquiry</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" style="--hero-image: url('../images/camiguin-image.jpg');">
+        <div class="hero-content">
+            <h2>Visitor Inquiry</h2>
+            <p>Have questions about visiting Camiguin? We're here to help. Fill out the form below and we'll respond shortly.</p>
+        </div>
+    </section>
+
+    <main class="subpage-main py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-5">
+                            <h2 class="card-title mb-4">Send Your Inquiry</h2>
+                            <form id="inquiryForm">
+                                <!-- Full Name -->
+                                <div class="mb-3">
+                                    <label for="fullName" class="form-label">Full Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                                    <div class="invalid-feedback">
+                                        Please provide your full name.
+                                    </div>
+                                </div>
+
+                                <!-- Email Address -->
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="example@email.com" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid email address.
+                                    </div>
+                                </div>
+
+                                <!-- Contact Number -->
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Contact Number <span class="text-danger">*</span></label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="09xx-xxx-xxxx" required>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid contact number.
+                                    </div>
+                                </div>
+
+                                <!-- Selected Destination -->
+                                <div class="mb-3">
+                                    <label for="destination" class="form-label">Selected Destination <span class="text-danger">*</span></label>
+                                    <select class="form-select" id="destination" name="destination" required>
+                                        <option value="">-- Choose a destination --</option>
+                                        <option value="white-island">White Island</option>
+                                        <option value="hibok-hibok">Mt. Hibok-Hibok</option>
+                                        <option value="sunken-cemetery">Sunken Cemetery</option>
+                                        <option value="ardent-springs">Ardent Hot Springs</option>
+                                        <option value="multiple">Multiple Destinations</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a destination.
+                                    </div>
+                                </div>
+
+                                <!-- Travel Date -->
+                                <div class="mb-3">
+                                    <label for="travelDate" class="form-label">Planned Travel Date <span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" id="travelDate" name="travelDate" required>
+                                    <div class="invalid-feedback">
+                                        Please select a travel date.
+                                    </div>
+                                </div>
+
+                                <!-- Number of Visitors -->
+                                <div class="mb-3">
+                                    <label for="visitors" class="form-label">Number of Visitors <span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" id="visitors" name="visitors" min="1" placeholder="1" required>
+                                    <div class="invalid-feedback">
+                                        Please provide the number of visitors (minimum 1).
+                                    </div>
+                                </div>
+
+                                <!-- Message -->
+                                <div class="mb-4">
+                                    <label for="message" class="form-label">Your Message <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="message" name="message" rows="5" placeholder="Tell us more about your travel plans or any specific questions..." required></textarea>
+                                    <div class="invalid-feedback">
+                                        Please provide a message.
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary btn-lg" type="submit" id="submitBtn">Send Inquiry</button>
+                                </div>
+
+                                <!-- Success Message -->
+                                <div class="alert alert-success mt-3 d-none" id="successMessage" role="alert">
+                                    Thank you for your inquiry! We will contact you shortly.
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Additional Info -->
+                    <div class="mt-5 p-4 bg-light rounded">
+                        <h4>Response Time</h4>
+                        <p>We typically respond to inquiries within 24-48 hours during business days. Thank you for your interest in visiting the Island Born of Fire!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-top">
+            <div class="row g-4">
+                <div class="col-12 col-sm-6 col-lg-3 footer-col">
+                    <h4>The Province of Camiguin</h4>
+                    <p>A volcanic island paradise in the heart of the Philippines. Rich in culture, natural wonders, and warm hospitality.</p>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3 footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="inquiry.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3 footer-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="culture.html">Culture & History</a></li>
+                        <li><a href="experiences.html">Experiences</a></li>
+                        <li><a href="travel.html">Travel Info</a></li>
+                        <li><a href="about-photo-gallery.html">Photo Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3 footer-col">
+                    <h4>Contact Information</h4>
+                    <p>Provincial Tourism Office<br>
+                    Camiguin, Philippines<br>
+                    Email: tourism@camiguin.gov.ph</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom d-flex flex-wrap justify-content-between align-items-center">
+            <p class="mb-0">&copy; 2026 The Province of Camiguin. All rights reserved.</p>
+            
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
