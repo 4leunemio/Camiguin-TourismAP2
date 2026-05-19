@@ -92,7 +92,7 @@ function initTypewriterEffect() {
 
 /* ============================================================
    4. SCROLL FADE-IN & FADE-OUT ANIMATION
-   AI ni sir
+   btw AI ni sir
    ============================================================ */
 
 function initScrollFadeAnimation() {
@@ -423,47 +423,3 @@ function closeGalleryLightbox() {
   const lightbox = document.getElementById('galleryLightbox');
   if (lightbox) lightbox.style.display = 'none';
 }
-
-/* ============================================================
-   10. SEARCH & FILTER (For Destinations Page)
-   ============================================================ */
-
-function initSearchFilter() {
-  const searchBar = document.getElementById('searchBar');
-  const filterSelect = document.getElementById('filterSelect');
-
-  if (searchBar) {
-    searchBar.addEventListener('input', performSearch);
-  }
-
-  if (filterSelect) {
-    filterSelect.addEventListener('change', performSearch);
-  }
-}
-
-function performSearch() {
-  const searchTerm = (document.getElementById('searchBar')?.value || '').toLowerCase();
-  const filterCategory = document.getElementById('filterSelect')?.value || '';
-  const cards = document.querySelectorAll('[data-destination-card]');
-
-  cards.forEach(card => {
-    const name = (card.dataset.name || '').toLowerCase();
-    const municipality = (card.dataset.municipality || '').toLowerCase();
-    const category = card.dataset.category || '';
-    const description = card.textContent.toLowerCase();
-
-    const matchesSearch = name.includes(searchTerm) ||
-                         municipality.includes(searchTerm) ||
-                         description.includes(searchTerm);
-
-    const matchesFilter = !filterCategory || category === filterCategory;
-
-    if (matchesSearch && matchesFilter) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-}
-
-initSearchFilter();
