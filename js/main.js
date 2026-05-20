@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
   initFormValidation();
   initSmoothScrollAnchor();
   initGalleryLightbox();
+  initDestinationFilters();
+  initPhotoGalleryModalCarousel();
 });
 
 /* ============================================================
@@ -422,4 +424,149 @@ function prevGalleryImage() {
 function closeGalleryLightbox() {
   const lightbox = document.getElementById('galleryLightbox');
   if (lightbox) lightbox.style.display = 'none';
+}
+
+/* ============================================================
+   10. DESTINATIONS SEARCH + CATEGORY FILTER
+   ============================================================ */
+
+function initDestinationFilters() {
+  const categoryFilter = document.getElementById('destinationCategoryFilter');
+  const searchFilter = document.getElementById('destinationSearchFilter');
+  const summary = document.getElementById('destinationFilterSummary');
+  const emptyState = document.getElementById('destinationNoResults');
+  const destinationSections = document.querySelectorAll('.destination-section');
+
+  if (!categoryFilter || !searchFilter || destinationSections.length === 0) return;
+
+  function applyDestinationFilters() {
+    const selectedCategory = categoryFilter.value;
+    const searchTerm = searchFilter.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    destinationSections.forEach((section) => {
+      const category = section.dataset.category || 'all';
+      const searchable = `${section.textContent} ${section.dataset.search || ''}`.toLowerCase();
+
+      const categoryMatch = selectedCategory === 'all' || category === selectedCategory;
+      const searchMatch = searchTerm.length === 0 || searchable.includes(searchTerm);
+      const isVisible = categoryMatch && searchMatch;
+
+      section.classList.toggle('d-none', !isVisible);
+      if (isVisible) visibleCount++;
+    });
+
+    if (summary) {
+      const suffix = visibleCount === 1 ? '' : 's';
+      summary.textContent = `Showing ${visibleCount} destination${suffix}`;
+    }
+
+    if (emptyState) {
+      emptyState.classList.toggle('d-none', visibleCount !== 0);
+    }
+  }
+
+  categoryFilter.addEventListener('change', applyDestinationFilters);
+  searchFilter.addEventListener('input', applyDestinationFilters);
+  applyDestinationFilters();
+}
+
+/* ============================================================
+   11. PHOTO GALLERY MODAL + CAROUSEL
+   ============================================================ */
+
+function initPhotoGalleryModalCarousel() {
+  const galleryCards = document.querySelectorAll('.gallery-section .gallery-card');
+  if (galleryCards.length === 0 || typeof bootstrap === 'undefined') return;
+
+  const galleryItems = [];
+  galleryCards.forEach((card, index) => {
+    const image = card.querySelector('img');
+    if (!image) return;
+
+    galleryItems.push({
+      src: image.getAttribute('src') || '',
+      alt: image.getAttribute('alt') || `Gallery image ${index + 1}`
+    });
+
+    card.style.cursor = 'pointer';
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.dataset.galleryIndex = String(galleryItems.length - 1);
+  });
+
+  if (galleryItems.length === 0) return;
+
+  let modal = document.getElementById('photoGalleryModal');
+  if (!modal) {
+    const slides = galleryItems.map((item, index) => `
+      <div class="carousel-item${index === 0 ? ' active' : ''}">
+        <img src="${item.src}" class="d-block w-100" alt="${escapeHtml(item.alt)}">
+      </div>
+    `).join('');
+
+    const modalWrapper = document.createElement('div');
+    modalWrapper.innerHTML = `
+      <div class="modal fade" id="photoGalleryModal" tabindex="-1" aria-labelledby="photoGalleryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+          <div class="modal-content bg-dark text-light border-0">
+            <div class="modal-header border-secondary">
+              <h5 class="modal-title" id="photoGalleryModalLabel">Photo Gallery</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0">
+              <div id="photoGalleryCarousel" class="carousel slide" data-bs-ride="false">
+                <div class="carousel-inner">
+                  ${slides}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#photoGalleryCarousel" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#photoGalleryCarousel" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modalWrapper.firstElementChild);
+    modal = document.getElementById('photoGalleryModal');
+  }
+
+  const bsModal = new bootstrap.Modal(modal);
+  const carouselElement = document.getElementById('photoGalleryCarousel');
+  const bsCarousel = new bootstrap.Carousel(carouselElement, { interval: false, ride: false });
+
+  function openAtIndex(index) {
+    bsCarousel.to(index);
+    bsModal.show();
+  }
+
+  galleryCards.forEach((card) => {
+    const openCard = () => {
+      const index = parseInt(card.dataset.galleryIndex || '0', 10);
+      openAtIndex(index);
+    };
+
+    card.addEventListener('click', openCard);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openCard();
+      }
+    });
+  });
+}
+
+function escapeHtml(value) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }

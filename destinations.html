@@ -83,8 +83,30 @@
     </section>
 
     <main class="subpage-main">
+        <section class="py-4 border-top border-bottom">
+            <div class="container">
+                <div class="row g-3 align-items-end">
+                    <div class="col-12 col-md-4">
+                        <label for="destinationCategoryFilter" class="form-label mb-1">Filter by type</label>
+                        <select id="destinationCategoryFilter" class="form-select">
+                            <option value="all">All Types</option>
+                            <option value="beach">Beach & Island</option>
+                            <option value="mountain">Mountain & Hiking</option>
+                            <option value="heritage">Heritage & Historical</option>
+                            <option value="wellness">Wellness & Springs</option>
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <label for="destinationSearchFilter" class="form-label mb-1">Search destination</label>
+                        <input id="destinationSearchFilter" type="search" class="form-control" placeholder="Search by name, description, tips, or activities...">
+                    </div>
+                </div>
+                <p id="destinationFilterSummary" class="text-muted mt-3 mb-0">Showing 4 destinations</p>
+            </div>
+        </section>
+
         <!-- WHITE ISLAND -->
-        <section id="white-island" class="destination-section py-5 border-top">
+        <section id="white-island" class="destination-section py-5 border-top" data-category="beach" data-search="white island sandbar snorkeling mambajao yumbing beach island sunrise">
             <div class="container">
                 <h2>White Island</h2>
                 <p class="lead">A pristine uninhabited sandbar rising from turquoise waters, offering breathtaking views of Mt. Hibok-Hibok.</p>
@@ -123,7 +145,7 @@
         </section>
 
         <!-- MT. HIBOK-HIBOK -->
-        <section id="hibok-hibok" class="destination-section py-5 border-top">
+        <section id="hibok-hibok" class="destination-section py-5 border-top" data-category="mountain" data-search="hibok hibok volcano hiking trekking summit fumaroles trail">
             <div class="container">
                 <h2>Mt. Hibok-Hibok</h2>
                 <p class="lead">The highest peak on Camiguin at 1,332 meters, offering stunning views and an active volcanic experience.</p>
@@ -162,7 +184,7 @@
         </section>
 
         <!-- SUNKEN CEMETERY -->
-        <section id="sunken-cemetery" class="destination-section py-5 border-top">
+        <section id="sunken-cemetery" class="destination-section py-5 border-top" data-category="heritage" data-search="sunken cemetery catarman historical memorial cross eruption heritage">
             <div class="container">
                 <h2>Sunken Cemetery</h2>
                 <p class="lead">A solemn and poignant memorial to the tragic 1871 volcanic eruption, where graves rest beneath the sea.</p>
@@ -201,7 +223,7 @@
         </section>
 
         <!-- ARDENT HOT SPRINGS -->
-        <section id="ardent-springs" class="destination-section py-5 border-top">
+        <section id="ardent-springs" class="destination-section py-5 border-top" data-category="wellness" data-search="ardent hot springs geothermal pools wellness relaxing mambajao mineral">
             <div class="container">
                 <h2>Ardent Hot Springs</h2>
                 <p class="lead">Natural geothermal hot springs where volcanic heat warms the waters for a relaxing therapeutic experience.</p>
@@ -236,6 +258,13 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section id="destinationNoResults" class="py-5 d-none">
+            <div class="container text-center">
+                <h3 class="mb-2">No destinations found</h3>
+                <p class="mb-0">Try a different keyword or switch the filter type.</p>
             </div>
         </section>
     </main>
